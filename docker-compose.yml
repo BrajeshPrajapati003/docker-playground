@@ -1,0 +1,35 @@
+services:
+  mysql_lab:
+    image: mysql:8
+    container_name: mysql_lab
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+    ports:
+      - "3306:3306"
+    volumes:
+      - devdata:/var/lib/mysql
+    networks:
+      - devnet
+
+  adminer_lab:
+    image: adminer
+    container_name: adminer_lab
+    ports:
+      - "8080:8080"
+    networks:
+      - devnet
+
+  ubuntu_lab:
+    image: ubuntu:latest
+    container_name: ubuntu_lab
+    command: /bin/bash
+    networks:
+      - devnet
+
+volumes:
+  devdata:
+    external: true
+
+networks:
+  devnet:
+    external: true
