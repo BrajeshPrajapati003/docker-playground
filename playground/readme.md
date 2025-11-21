@@ -1,3 +1,6 @@
+....DOCKER CMD Gyaan...
+
+
 docker login
 docker logout
 docker build -t brajeshprajapati003/expressapp-learn .
