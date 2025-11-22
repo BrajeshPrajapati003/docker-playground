@@ -7,3 +7,30 @@ services:
     - "8080:8080"
     networks:
       - app_network
+      
+
+  frontend:
+    image: react-app
+    ports:
+      - "3000:80"
+    networks:
+      - app_network
+
+
+  db:
+    image: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    networks:
+      - app_network
+
+
+volumes:
+  db_data:
+
+
+networks:
+  app_network:
+    driver: bridge
